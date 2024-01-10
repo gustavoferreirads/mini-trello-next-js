@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 14px;
+}
+
+/* This styles the scrollbar track */
+::-webkit-scrollbar {
+  width: 5px; /* for vertical scrollbars */
+  height: 5px; /* for horizontal scrollbars */
+}
+
+/* This styles the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: grey; /* the color of the thumb */
+  border-radius: 10px;
+}
+
+/* This styles the scrollbar thumb when it's hovered */
+::-webkit-scrollbar-thumb:hover {
+  background: darkgrey;
+}
+
+/* This styles the scrollbar corner */
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
