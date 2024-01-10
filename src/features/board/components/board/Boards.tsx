@@ -11,6 +11,8 @@ import Link from 'next/link'
 export default function Boards() {
   const { data, loading } = useQuery<{ boards: Board[] }>(GET_BOARDS)
   const cardClass = 'rounded-lg w-48 h-28 hover:opacity-70 p-4  cursor-pointer'
+
+  const boards = data?.boards || []
   return (
     <div className="w-full py-10 px-4 rounded-md border-t-2 mt-2	border-gray-100">
       <div className=" flex my-2 gap-2">
@@ -22,7 +24,7 @@ export default function Boards() {
 
       <div className="flex mt-4 gap-4 flex-wrap">
         {!loading &&
-          data?.boards.map((board, index) => (
+          boards.map((board, index) => (
             <Link key={index} href={`/board/${board.id}`}>
               <div
                 key={board.id}

@@ -12,8 +12,8 @@ interface BoardIdPageProps {
 const BoardPage = ({ params }: BoardIdPageProps) => {
   return (
     <BoardProvider boardId={params.boardId}>
-       <CardProvider>
-           < BoardContainer />
+      <CardProvider>
+        <BoardContainer />
       </CardProvider>
     </BoardProvider>
   )
