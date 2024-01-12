@@ -17,7 +17,6 @@ export const useCreateBoard = () => {
       refetchQueries: [GET_BOARDS],
     })
 
-    console.log(result)
     return result.data.createBoard
   }
 
@@ -29,7 +28,9 @@ export const useCreateBoard = () => {
 }
 
 export const useGetBoardById = (boardId?: string) => {
-  const { data, loading, error } = useQuery<{ board: Board }>(GET_BOARD_BY_ID, {
+  const { data, loading, error } = useQuery<{
+    board: Board
+  }>(GET_BOARD_BY_ID, {
     variables: { id: boardId },
     skip: !boardId,
   })

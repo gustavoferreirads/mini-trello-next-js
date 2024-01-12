@@ -1,10 +1,10 @@
 import React from 'react'
 import { Button } from './Button'
 import { Typography } from './Typography'
-import { FaRegTrashAlt } from 'react-icons/fa'
 
 interface ConfirmModalProps {
   isOpen: boolean
+  loading?: boolean
   onClose: () => void
   onConfirm: () => void
   title: string
@@ -15,6 +15,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
   isOpen,
   onClose,
   onConfirm,
+  loading,
   title,
   message,
 }) => {
@@ -30,7 +31,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
         </div>
 
         <div className="items-center px-4 py-3 flex justify-center">
-          <Button className="px-4 py-2" onClick={onConfirm}>
+          <Button className="px-4 py-2" onClick={onConfirm} loading={loading}>
             Confirm
           </Button>
           <Button

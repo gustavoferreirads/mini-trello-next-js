@@ -101,6 +101,7 @@ const DetailCardModal: React.FC = () => {
           setCard(null)
           setIsConfirmModalOpen(false)
         }}
+        loading={loading}
         onConfirm={handleDelete}
         title="Delete Card"
         message="Are you sure you want to delete this card?"

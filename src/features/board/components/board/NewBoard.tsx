@@ -73,7 +73,7 @@ const NewBoard: React.FC<NewBoardProps> = ({ children, align }) => {
 
               <Button
                 type="submit"
-                disabled={!board.title}
+                loading={loading}
                 className="w-full mt-2"
               >
                 Create

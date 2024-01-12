@@ -14,7 +14,7 @@ interface CardProps {
 export const ColumnOptions: FC<CardProps> = ({ column }) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState<boolean>(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const { sort, remove } = useColumn()
+  const { sort, remove, loading } = useColumn()
 
   const openConfirmDialog = () => {
     setIsModalOpen(true)
@@ -76,6 +76,7 @@ export const ColumnOptions: FC<CardProps> = ({ column }) => {
           await remove(column.id)
           setIsModalOpen(false)
         }}
+        loading={loading}
         title="Delete action"
         message={`Are you sure you want to delete ${column.title} column?`}
       />

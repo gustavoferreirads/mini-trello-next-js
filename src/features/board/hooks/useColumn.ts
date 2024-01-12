@@ -1,5 +1,3 @@
-import { Column } from './../../../../../backend/dtos/model/Column'
-
 import { useMutation } from '@apollo/client'
 import {
   DELETE_COLUMN,

@@ -34,7 +34,9 @@ export const BoardProvider: React.FC<Props> = ({ children, boardId }) => {
   const { move: moveCardMutation } = useCard()
 
   useEffect(() => {
-    if (data) setBoard(JSON.parse(JSON.stringify(data)))
+    if (data) {
+      setBoard({ ...JSON.parse(JSON.stringify(data)) })
+    }
   }, [data, loading, error])
 
   const moveCard = useMemo(
@@ -51,9 +53,8 @@ export const BoardProvider: React.FC<Props> = ({ children, boardId }) => {
     [board],
   )
 
-  const moveColumn = useCallback(
-    (column: IColumn, toColumn: IColumn) => {
-      /*   console.log(` Movendo de ${column.pos} para ${toColumn.pos}`, new Date())*/
+  const moveColumn = useMemo(
+    () => (column: IColumn, toColumn: IColumn) => {
       if (!board) return
 
       moveColumnMutation(column.id, toColumn.id)
@@ -64,8 +65,6 @@ export const BoardProvider: React.FC<Props> = ({ children, boardId }) => {
       )
 
       setBoard({ ...board, columns })
-
-      /*  moveColumnMutation(column.id, toColumn.id)*/
     },
     [board],
   )

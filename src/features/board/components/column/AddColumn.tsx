@@ -2,7 +2,7 @@
 import { FormEvent, useState } from 'react'
 import CloseIcon from '@mui/icons-material/Close'
 import AddIcon from '@mui/icons-material/Add'
-import { useCreateColumn } from '../../hooks/useColumn'
+import {useColumn, useCreateColumn} from '../../hooks/useColumn'
 import { IColumn } from '../../types/column'
 import { Button } from '@/common/Button'
 import { Input } from '@/common/Input'
@@ -25,25 +25,25 @@ export default function AddColumn({
     setIsAdding(false)
   }
 
-  const { create, error, loading } = useCreateColumn()
+  const { save, error, loading } = useColumn()
 
   async function handleCreate(event: FormEvent) {
     event.preventDefault()
     if (!title) return
-    await create({ title, boardId, pos } as IColumn)
+    await save({ title, boardId, pos } as IColumn)
     setTitle('')
   }
 
   if (!isAdding) {
     return (
       <div className="w-[272px]">
-        <button
+        <Button
           className="w-[272px] bg-white hover:bg-gray-400 hover:bg-opacity-25  bg-opacity-25 ml-2 rounded-xl text-white flex text-sm font-medium p-3 mt-2"
           onClick={() => setIsAdding(true)}
         >
           <AddIcon fontSize="small" className="mr-2" />
           {isFirstColumn ? 'Add a list' : 'Add another list'}
-        </button>
+        </Button>
       </div>
     )
   }
